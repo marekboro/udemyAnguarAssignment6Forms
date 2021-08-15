@@ -5,8 +5,7 @@
       <form (ngSubmit)="onSubmit()" #practiceForm="ngForm">
         <div>
           <label for="email">Email:</label>
-          <input class="form-control"
-          type="email" #email="ngModel" email required ngModel name="email" id="email">
+          <input class="form-control" type="email" #email="ngModel" email required ngModel name="email" id="email">
 
         </div>
         <div *ngIf="email.touched && !email.valid">
@@ -26,7 +25,8 @@
         </div>
         <div>
           <label for="password">Password:</label>
-          <input class="form-control" required type="password" #password="ngModel" password required ngModel name="password" id="password">
+          <input class="form-control" required type="password" #password="ngModel" password required ngModel
+            name="password" id="password">
 
           <div *ngIg="!password.valid && password.touched">
             <p class="inner-warning">Incorrect entry</p>
@@ -37,6 +37,16 @@
       <div *ngIf="practiceForm.touched && !practiceForm.valid">
         <p class="warning">Please check all values are correct</p>
       </div>
+      <br>
+      <div class="row" *ngIf="submitted">
+        <div>
+          <p>Submimtted values: </p>
+          <p> Email: {{submition.email}}</p>
+          <p> Subscription: {{submition.subscriptionType}}</p>
+          <p> Password: {{submition.password}}</p>
+        </div>
+      </div>
+
       <!-- Add a Form with the following Inputs (and Validators)
            1) Mail address (should not be empty and should be an email address)
            2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")

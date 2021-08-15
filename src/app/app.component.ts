@@ -8,11 +8,23 @@ import { NgForm } from '@angular/forms';
 })
 export class AppComponent {
   @ViewChild('practiceForm') testForm: NgForm;
+  submitted = false;
 
-  defaultSelection = "advanced"  
-  onSubmit(){
-    console.log(this.testForm)
+  submition = {
+    email: "",
+    subscriptionType: "",
+    password: ""
+  }
 
+  defaultSelection = "advanced"
+  onSubmit() {
+    console.log(this.testForm.value)
+    this.submitted = true
+    this.submition.email= this.testForm.value.email;
+    this.submition.subscriptionType = this.testForm.value.subscriptionType;
+    this.submition.password = this.testForm.value.password;
+    console.log(this.submition)
+   
   }
 
 }
