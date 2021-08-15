@@ -1,6 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+
+      <form (ngSubmit)="onSubmit()" #practiceForm="ngForm">
+        <div>
+          <label for="email">Email:</label>
+          <input class="form-control"
+          type="email" #email="ngModel" email required ngModel name="email" id="email">
+
+        </div>
+        <div *ngIf="email.touched && !email.valid">
+          <p class="inner-warning">Email incorrect </p>
+        </div>
+
+        <div>
+          <label for="subscriptionType">Select subscrition type:</label>
+          <select #subscriptionType="ngModel" name="subscriptionType" [ngModel]='defaultSelection' class="form-control"
+            required>
+            <option value="basic">Basic</option>
+            <option value="advanced">Advanced</option>
+            <option value="pro">Pro</option>
+          </select>
+          <p class="inner-warning" *ngIf="!subscriptionType.valid && subscriptionType.touched">Incorrect option selected
+          </p>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input class="form-control" required type="password" #password="ngModel" password required ngModel name="password" id="password">
+
+          <div *ngIg="!password.valid && password.touched">
+            <p class="inner-warning">Incorrect entry</p>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!practiceForm.valid">Submit</button>
+      </form>
+      <div *ngIf="practiceForm.touched && !practiceForm.valid">
+        <p class="warning">Please check all values are correct</p>
+      </div>
       <!-- Add a Form with the following Inputs (and Validators)
            1) Mail address (should not be empty and should be an email address)
            2) A Dropdown which allows the user to select from three different Subscriptions ("Basic", "Advanced", "Pro")

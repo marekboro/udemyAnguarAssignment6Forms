@@ -1,0 +1,10 @@
+.warning{
+    border:solid red 2px;
+    margin: 2px;
+    padding: 2px;
+}
+.inner-warning{
+    border:solid rgb(230, 107, 6) 1px;
+    margin: 1px;
+    padding: 1px;
+}
